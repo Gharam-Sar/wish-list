@@ -1,25 +1,48 @@
-import logo from './logo.svg';
-import './App.css';
+import Navbar from "./components/Navbar";
+import Hearts from "./routes/Hearts";
+import Home from "./routes/Home";
+import { Route, Routes } from "react-router-dom";
+import cards from "./utilities";
+import React from "react";
+const App = () => {
+  const [cardsValues, setCardsValues] = React.useState(cards);
 
-function App() {
+  const favToggleChange = (id) => {
+    const mappedCards = cardsValues.map((card) =>
+      card.id === id ? { ...card, fav: !card.fav } : card
+    );
+
+    setCardsValues(mappedCards);
+    // localStorage.setItem("todo", JSON.stringify(mappedTasks));
+  };
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <Navbar />
+      <div className="container">
+        <Routes>
+          <Route
+            path="/"
+            element={
+              <Home
+                cardsValues={cardsValues}
+                setCardsValues={setCardsValues}
+                favToggleChange={favToggleChange}
+              />
+            }
+          />
+          <Route
+            path="/MyList"
+            element={
+              <Hearts
+                cardsValues={cardsValues}
+                setCardsValues={setCardsValues}
+                favToggleChange={favToggleChange}
+              />
+            }
+          />
+        </Routes>
+      </div>
+    </>
   );
-}
-
+};
 export default App;
