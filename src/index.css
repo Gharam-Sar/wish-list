@@ -21,7 +21,16 @@ body {
   position: fixed;
   z-index: 1;
 }
+.card-style .card-name span {
+  padding: 5px;
+}
+.hearts-empty {
+  color: #65647c;
+  font-size: 30px;
+  font-weight: 700;
 
+  padding-top: 2%;
+}
 .big-title {
   font-size: 35px;
   color: inherit;
@@ -36,6 +45,14 @@ body {
   font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
     "Lucida Sans", Arial, sans-serif;
 }
+.page-title {
+  padding-top: 6%;
+  font-size: 35px;
+  color: #85586f;
+  font-weight: bold;
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
+}
 .nav ul {
   padding: 0;
   margin: 0;
@@ -43,7 +60,20 @@ body {
   display: flex;
   column-gap: 8px;
 }
-
+.backdrop {
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  justify-content: center;
+  row-gap: 3%;
+  height: 35%;
+  width: 25%;
+  background-color: #f1d1d1;
+  color: #bb2845;
+  font-size: 20px;
+  font-weight: 700;
+  border-radius: 20px;
+}
 .card-style {
   display: flex;
   padding-top: 8%;
@@ -55,7 +85,7 @@ body {
   align-items: center;
 }
 .card-style:hover {
-  background-color: #f5c6c6;
+  background-color: #f1d1d1;
   border-radius: 5px;
 }
 
@@ -78,7 +108,7 @@ body {
   font-size: 20px;
 }
 .cards-display {
-  padding-top: 6%;
+  padding-top: 1%;
   justify-content: center;
   display: grid;
   /* grid-template-columns: 350px 350px 350px 350px; */
