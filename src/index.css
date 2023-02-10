@@ -11,7 +11,7 @@ body {
 }
 
 .nav {
-  background-color: #c95c72;
+  background-color: #85586f;
   color: white;
   height: 9%;
   width: 100%;
@@ -21,6 +21,7 @@ body {
   position: fixed;
   z-index: 1;
 }
+
 .card-style .card-name span {
   padding: 5px;
 }
@@ -28,16 +29,12 @@ body {
   color: #65647c;
   font-size: 30px;
   font-weight: 700;
-
   padding-top: 2%;
 }
 .big-title {
   font-size: 35px;
   color: inherit;
-
   height: 100%;
-  /* display: flex;
-  align-items: center; */
   padding: 10px;
   letter-spacing: 0.1em;
   font-weight: bold;
@@ -46,12 +43,22 @@ body {
     "Lucida Sans", Arial, sans-serif;
 }
 .page-title {
+  display: flex;
+  justify-content: center;
   padding-top: 6%;
   font-size: 35px;
-  color: #85586f;
+  color: #bb2845;
   font-weight: bold;
   font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
     "Lucida Sans", Arial, sans-serif;
+}
+.home-page-slider {
+  padding-top: 3%;
+  width: 100%;
+
+  display: flex;
+  justify-content: center;
+  box-shadow: 0px 0px 10px 0px rgb(170, 170, 170);
 }
 .nav ul {
   padding: 0;
@@ -65,20 +72,20 @@ body {
   flex-direction: column;
   align-content: center;
   justify-content: center;
-  row-gap: 3%;
+  row-gap: 5%;
   height: 35%;
   width: 25%;
-  background-color: #f1d1d1;
+  background-color: #f3ebeb;
   color: #bb2845;
   font-size: 20px;
   font-weight: 700;
   border-radius: 20px;
 }
+
 .card-style {
   display: flex;
   padding-top: 8%;
   border-radius: 5px;
-  /* box-shadow: 0px 0px 0px 1px rgb(238, 238, 238); */
   transition: all 0.5s ease;
   flex-direction: column;
   justify-content: center;
@@ -111,12 +118,75 @@ body {
   padding-top: 1%;
   justify-content: center;
   display: grid;
-  /* grid-template-columns: 350px 350px 350px 350px; */
-  /* grid-template-columns: auto auto auto auto; */
   grid-template-columns: repeat(auto-fill, minmax(350px, 350px));
   margin-left: 1%;
   margin-right: 1%;
   grid-auto-rows: 380px;
   column-gap: 1%;
   row-gap: 1%;
+}
+
+.home-ads-about {
+  margin-top: 5%;
+  margin-bottom: 5%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  column-gap: 5%;
+}
+.home-ads-about-section {
+  border-radius: 20px;
+  padding: 2%;
+  width: 600px;
+  height: 400px;
+  background-color: #85586f;
+  display: flex;
+  flex-direction: column;
+  color: white;
+  align-items: center;
+  justify-content: center;
+  row-gap: 20px;
+}
+.home-ads-about-section:hover {
+  background-color: #c082a2;
+}
+.plane-background {
+  background-image: url("./imgs/plane.png");
+  background-repeat: no-repeat;
+  background-position-x: right;
+  background-position-y: top;
+}
+.home-ads-about-title {
+  font-size: 35px;
+  font-weight: bold;
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
+}
+.home-ads-about-content {
+  font-size: 35px;
+  font-weight: 700;
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
+}
+
+.product-style {
+  background-color: #d8bdcb;
+  display: flex;
+  padding-top: 8%;
+  border-radius: 20px;
+  transition: all 0.5s ease;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0px 0px 10px 0px rgb(170, 170, 170);
+}
+.product-style:hover {
+  background-color: #c081a5;
+}
+.product-img {
+  height: 250px;
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  padding: 0 5%;
 }
