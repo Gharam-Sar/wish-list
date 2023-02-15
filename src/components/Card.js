@@ -1,72 +1,53 @@
 import * as React from "react";
 import { FaHeart } from "react-icons/fa";
-import { FaInfoCircle } from "react-icons/fa";
-import Button from "@mui/material/Button";
+import Backdrop from "./Backdrop";
 
-import Backdrop from "@mui/material/Backdrop";
-const Card = ({ card, cardsValues, setCardsValues, favToggleChange }) => {
-  const url = "url(" + card.img + ")";
-
+const Card = ({ key, card, cardsValues, setCardsValues }) => {
+  const url = `url(${card.img})`;
   const [openBackdrop, setOpenBackdrop] = React.useState(false);
-  const handleBackdopClose = () => {
+
+  const handleBackdropOpen = () => {
+    setOpenBackdrop(true);
+  };
+
+  const handleBackdropClose = () => {
     setOpenBackdrop(false);
   };
-  const handleBackdopToggle = () => {
-    setOpenBackdrop(!openBackdrop);
-  };
 
+  const addToFavourites = (id) => {
+    if (cardsValues[id - 1].fav) {
+      handleBackdropOpen();
+    } else {
+      const mappedCards = cardsValues.map((card) =>
+        card.id === id ? { ...card, fav: true } : card
+      );
+      setCardsValues(mappedCards);
+      localStorage.setItem("Cards", JSON.stringify(mappedCards));
+    }
+  };
   return (
     <div>
       <div className="card-style">
         <div
+          onClick={() => addToFavourites(card.id)}
           className="card-img"
           style={{ backgroundImage: url, backgroundSize: "100% 100%" }}
         >
-          <h2 onClick={() => favToggleChange(card.id)}>
-            {card.fav ? (
-              <FaHeart color="#c95c72" />
-            ) : (
-              <FaHeart color="#fcdfad" />
-            )}
+          <h2>
+            <FaHeart color={card.fav ? "#c95c72" : "#fcdfad"} />
           </h2>
         </div>
-        <h2 className="card-name">
-          {card.name}{" "}
-          <span>
-            {" "}
-            <FaInfoCircle
-              onClick={handleBackdopToggle}
-              color="#c95c72"
-              fontSize="25px"
-            />{" "}
-          </span>
-        </h2>
+        <h2 className="card-name">{card.name} </h2>
       </div>
-      <Backdrop
-        sx={{ zIndex: (theme) => theme.zIndex.drawer + 1 }}
-        open={openBackdrop}
-        onClick={handleBackdopClose}
-      >
-        <div className="backdrop">
-          <div>{card.name}</div>
-          <div>{card.tickets} Tickets Per Trip</div>
-          <div>Duration {card.time}</div>
-          <div>
-            <Button
-              sx={{
-                backgroundColor: "#65647C",
-                color: "white",
-                fontWeight: "bold",
-                ":hover": {
-                  backgroundColor: "#85586F",
-                },
-              }}
-            >
-              Pock Trip Now
-            </Button>
-          </div>
-        </div>
-      </Backdrop>
+      {openBackdrop ? (
+        <Backdrop handleBackdropClose={handleBackdropClose} />
+      ) : (
+        <></>
+      )}
+
+      <div>
+        <div></div>
+      </div>
     </div>
   );
 };

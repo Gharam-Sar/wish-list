@@ -1,7 +1,7 @@
 import React from "react";
-import Card from "../components/Card";
+import Favourite from "../components/Favourite";
 
-const Hearts = ({ cardsValues, setCardsValues, favToggleChange }) => {
+const Hearts = ({ cardsValues, setCardsValues }) => {
   const favCards = cardsValues.filter((card) => card.fav === true);
   var favCardsExist = false;
   if (favCards.length > 0) favCardsExist = true;
@@ -9,13 +9,20 @@ const Hearts = ({ cardsValues, setCardsValues, favToggleChange }) => {
     <div>
       <div className="page-title">Destinations you Liked</div>
       {favCardsExist ? (
-        <div className="cards-display">
+        <div className="fav-display">
+          <div className="fav-style">
+            <h2 className="fav-img header"></h2>
+            <h2 className="fav-name header">Destination Name</h2>
+            <h2 className="fav-time header">Trip Duration</h2>
+            <h2 className="fav-tickets header">Available Tickets</h2>
+            <h2 className="fav-link header">Trip Link</h2>
+          </div>
           {favCards.map((card, index) => (
-            <Card
+            <Favourite
+              key={card.id}
               card={card}
               cardsValues={cardsValues}
               setCardsValues={setCardsValues}
-              favToggleChange={favToggleChange}
             />
           ))}
         </div>

@@ -1,49 +1,23 @@
-import { Link, useMatch, useResolvedPath } from "react-router-dom";
-import { FaStar } from "react-icons/fa";
+import { NavLink, useMatch, useResolvedPath } from "react-router-dom";
 import { FaHeart } from "react-icons/fa";
 import { FaHome } from "react-icons/fa";
-import { FaShoppingCart } from "react-icons/fa";
 const Navbar = () => {
-  const resolvedPath = useResolvedPath("/Destinations");
+  const resolvedPath = useResolvedPath("/");
   const isActive = useMatch({ path: resolvedPath.pathname, end: true });
+
   const resolvedPath2 = useResolvedPath("/MyList");
   const isActive2 = useMatch({ path: resolvedPath2.pathname, end: true });
-  const resolvedPath3 = useResolvedPath("/");
-  const isActive3 = useMatch({ path: resolvedPath3.pathname, end: true });
-  const resolvedPath4 = useResolvedPath("/Products");
-  const isActive4 = useMatch({ path: resolvedPath4.pathname, end: true });
+
   return (
     <nav className="nav">
       <span className="big-title">Vacation Destination</span>
       <ul>
-        <Link title="Home Page" to="/">
-          {isActive3 ? (
-            <FaHome color="white" fontSize="25px" />
-          ) : (
-            <FaHome color="#d6a3be" fontSize="25px" />
-          )}
-        </Link>
-        <Link title="Destination" to="/Destinations">
-          {isActive ? (
-            <FaStar color="white" fontSize="25px" />
-          ) : (
-            <FaStar color="#d6a3be" fontSize="25px" />
-          )}
-        </Link>
-        <Link title="Your Favourites" to="/MyList">
-          {isActive2 ? (
-            <FaHeart color="white" fontSize="25px" />
-          ) : (
-            <FaHeart color="#d6a3be" fontSize="25px" />
-          )}
-        </Link>
-        <Link title="Products" to="/Products">
-          {isActive4 ? (
-            <FaShoppingCart color="white" fontSize="25px" />
-          ) : (
-            <FaShoppingCart color="#d6a3be" fontSize="25px" />
-          )}
-        </Link>
+        <NavLink title="Home Page" to="/">
+          <FaHome color={isActive ? "white" : "#b8b7d1"} fontSize="25px" />
+        </NavLink>
+        <NavLink title="Your Favourites" to="/MyList">
+          <FaHeart color={isActive2 ? "white" : "#b8b7d1"} fontSize="25px" />
+        </NavLink>
       </ul>
     </nav>
   );

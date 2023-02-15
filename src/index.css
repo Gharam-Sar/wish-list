@@ -11,7 +11,9 @@ body {
 }
 
 .nav {
-  background-color: #85586f;
+  padding-right: 1%;
+  padding-left: 1%;
+  background-color: #65647c;
   color: white;
   height: 9%;
   width: 100%;
@@ -25,33 +27,67 @@ body {
 .card-style .card-name span {
   padding: 5px;
 }
-.hearts-empty {
-  color: #65647c;
-  font-size: 30px;
-  font-weight: 700;
-  padding-top: 2%;
-}
-.big-title {
-  font-size: 35px;
-  color: inherit;
-  height: 100%;
-  padding: 10px;
-  letter-spacing: 0.1em;
-  font-weight: bold;
 
-  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
-    "Lucida Sans", Arial, sans-serif;
+@media only screen and (min-width: 701px) {
+  .big-title {
+    color: inherit;
+    height: 100%;
+    padding: 10px;
+    letter-spacing: 0.1em;
+    font-weight: bold;
+    font-size: 35px;
+
+    font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+      "Lucida Sans", Arial, sans-serif;
+  }
+  .hearts-empty {
+    color: #6c6a99;
+    font-size: 30px;
+    font-weight: 700;
+    padding-top: 2%;
+  }
+  .page-title {
+    display: flex;
+    justify-content: center;
+    padding-top: 8%;
+    font-size: 35px;
+    color: #354259;
+    font-weight: bold;
+    font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+      "Lucida Sans", Arial, sans-serif;
+  }
 }
-.page-title {
-  display: flex;
-  justify-content: center;
-  padding-top: 6%;
-  font-size: 35px;
-  color: #bb2845;
-  font-weight: bold;
-  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
-    "Lucida Sans", Arial, sans-serif;
+@media only screen and (max-width: 700px) {
+  .big-title {
+    font-size: 25px;
+
+    color: inherit;
+    height: 100%;
+    padding: 10px;
+    letter-spacing: 0.1em;
+    font-weight: bold;
+
+    font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+      "Lucida Sans", Arial, sans-serif;
+  }
+  .hearts-empty {
+    color: #6c6a99;
+    font-size: 20px;
+    font-weight: 700;
+    padding-top: 2%;
+  }
+  .page-title {
+    display: flex;
+    justify-content: center;
+    padding-top: 8%;
+    font-size: 25px;
+    color: #354259;
+    font-weight: bold;
+    font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+      "Lucida Sans", Arial, sans-serif;
+  }
 }
+
 .home-page-slider {
   padding-top: 3%;
   width: 100%;
@@ -67,24 +103,38 @@ body {
   display: flex;
   column-gap: 8px;
 }
+
 .backdrop {
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 1;
+  height: 100%;
+  width: 100%;
   display: flex;
   flex-direction: column;
-  align-content: center;
+  align-items: center;
   justify-content: center;
-  row-gap: 5%;
-  height: 35%;
-  width: 25%;
-  background-color: #f3ebeb;
-  color: #bb2845;
+  color: #f3ebeb;
   font-size: 20px;
-  font-weight: 700;
-  border-radius: 20px;
+  font-weight: bold;
+  position: fixed;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+}
+.backdrop-content {
+  border-radius: 10px;
+  padding-top: 3%;
+  background-color: #d7d6f1;
+  width: 30%;
+  height: 15%;
+  color: #354259;
+  box-shadow: 0px 0px 10px 0px #33307a;
 }
 
 .card-style {
   display: flex;
-  padding-top: 8%;
+
   border-radius: 5px;
   transition: all 0.5s ease;
   flex-direction: column;
@@ -92,8 +142,9 @@ body {
   align-items: center;
 }
 .card-style:hover {
-  background-color: #f1d1d1;
+  background-color: #b6e2a1;
   border-radius: 5px;
+  box-shadow: 0px 0px 10px 0px rgb(170, 170, 170);
 }
 
 .card-style:hover .card-img {
@@ -121,72 +172,57 @@ body {
   grid-template-columns: repeat(auto-fill, minmax(350px, 350px));
   margin-left: 1%;
   margin-right: 1%;
+  width: 100%;
   grid-auto-rows: 380px;
   column-gap: 1%;
   row-gap: 1%;
 }
 
-.home-ads-about {
-  margin-top: 5%;
-  margin-bottom: 5%;
-  display: flex;
-  flex-direction: row;
+.fav-display {
+  padding-top: 1%;
   justify-content: center;
-  column-gap: 5%;
-}
-.home-ads-about-section {
-  border-radius: 20px;
-  padding: 2%;
-  width: 600px;
-  height: 400px;
-  background-color: #85586f;
   display: flex;
   flex-direction: column;
-  color: white;
-  align-items: center;
-  justify-content: center;
-  row-gap: 20px;
-}
-.home-ads-about-section:hover {
-  background-color: #c082a2;
-}
-.plane-background {
-  background-image: url("./imgs/plane.png");
-  background-repeat: no-repeat;
-  background-position-x: right;
-  background-position-y: top;
-}
-.home-ads-about-title {
-  font-size: 35px;
+  margin-left: 1%;
+  margin-right: 1%;
+
   font-weight: bold;
   font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
     "Lucida Sans", Arial, sans-serif;
+  font-size: 15px;
 }
-.home-ads-about-content {
-  font-size: 35px;
-  font-weight: 700;
-  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
-    "Lucida Sans", Arial, sans-serif;
-}
-
-.product-style {
-  background-color: #d8bdcb;
-  display: flex;
-  padding-top: 8%;
-  border-radius: 20px;
-  transition: all 0.5s ease;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  box-shadow: 0px 0px 10px 0px rgb(170, 170, 170);
-}
-.product-style:hover {
-  background-color: #c081a5;
-}
-.product-img {
-  height: 250px;
+.fav-style {
   width: 100%;
+  padding: 2px;
+  border: 1px solid rgba(192, 128, 128, 0.5);
+  border-radius: 10px;
   display: flex;
-  justify-content: flex-end;
-  padding: 0 5%;
+  flex-direction: row;
+  column-gap: 1%;
+  text-align: center;
+  align-items: center;
+  color: #863421;
+}
+.col {
+  flex: 1;
+  min-width: 5%;
+}
+.fav-btn {
+  background-color: #65647c;
+  border-radius: 15px;
+  font-size: 15px;
+  color: #d7d6f1;
+  width: 50%;
+  height: 100%;
+  cursor: pointer;
+  font-weight: bold;
+  border: 1px solid #33307a;
+}
+.fav-btn:hover {
+  background-color: #33307a;
+}
+.header {
+  color: #33307a;
+  flex: 1;
+  min-width: 5%;
 }

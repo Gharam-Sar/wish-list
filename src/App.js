@@ -1,23 +1,22 @@
 import Navbar from "./components/Navbar";
 import Hearts from "./routes/Hearts";
 import Home from "./routes/Home";
-import Destination from "./routes/Destination";
-import Products from "./routes/Products";
 import { Route, Routes } from "react-router-dom";
-import cards from "./CardUtilities";
-import products from "./ProductUtilities";
+import cards from "./cardList";
 import React from "react";
 
 const App = () => {
   const [cardsValues, setCardsValues] = React.useState(cards);
-  const [productsValues, setProductsValues] = React.useState(products);
-  const favToggleChange = (id) => {
-    const mappedCards = cardsValues.map((card) =>
-      card.id === id ? { ...card, fav: !card.fav } : card
-    );
+  const [openBackdrop, setOpenBackdrop] = React.useState(false);
 
-    setCardsValues(mappedCards);
-  };
+  React.useEffect(() => {
+    const localStorageCards = JSON.parse(localStorage.getItem("Cards"));
+
+    if (Boolean(localStorageCards)) {
+      setCardsValues(localStorageCards);
+    }
+  }, []);
+
   return (
     <>
       <Navbar />
@@ -29,38 +28,18 @@ const App = () => {
               <Home
                 cardsValues={cardsValues}
                 setCardsValues={setCardsValues}
-                favToggleChange={favToggleChange}
-                productsValues={productsValues}
-                setProductsValues={setProductsValues}
+                openBackdrop={openBackdrop}
+                setOpenBackdrop={setOpenBackdrop}
               />
             }
           />
-          <Route
-            path="/Destinations"
-            element={
-              <Destination
-                cardsValues={cardsValues}
-                setCardsValues={setCardsValues}
-                favToggleChange={favToggleChange}
-              />
-            }
-          />
+
           <Route
             path="/MyList"
             element={
               <Hearts
                 cardsValues={cardsValues}
                 setCardsValues={setCardsValues}
-                favToggleChange={favToggleChange}
-              />
-            }
-          />
-          <Route
-            path="/Products"
-            element={
-              <Products
-                productsValues={productsValues}
-                setProductsValues={setProductsValues}
               />
             }
           />
